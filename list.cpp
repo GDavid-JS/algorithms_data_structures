@@ -3,18 +3,18 @@
 
 template <typename T> class List {
 private:
-    template <typename T2> class Node;
+    class Node;
     
     unsigned int list_length = 0;
-    Node<T>* head = nullptr;
-    Node<T>* last = nullptr;
+    Node* head = nullptr;
+    Node* last = nullptr;
 
-    template <typename T2> class Node {
+    class Node {
     public:
         Node* pNext;
-        T2 data;
+        T data;
 
-        Node(T2 data = T2(), Node* pNext = nullptr) {
+        Node(T data = T(), Node* pNext = nullptr) {
             this->data = data;
             this->pNext = pNext;
         }
@@ -33,25 +33,25 @@ public:
         list_length++;
 
         if (head == nullptr) {
-            head = new Node<T>(data);
+            head = new Node(data);
             last = head;
         } else {
-            Node<T> *current = new Node<T>(data);
+            Node *current = new Node(data);
             last->pNext = current;
             last = current;
         }
     }
 
     void push_front(T data) {
-        // Node<T> *last_head = head;
-        head = new Node<T>(data, head);
+        // Node *last_head = head;
+        head = new Node(data, head);
         // head->pNext = last_head;
 
         list_length++;
     }
 
     void pop_back() {
-        Node<T>* element = head;
+        Node* element = head;
         while (element->pNext->pNext != nullptr) {
             element = element->pNext;
         }
@@ -64,7 +64,7 @@ public:
     }
 
     void pop_front() {
-        Node<T> *new_head = head->pNext;
+        Node *new_head = head->pNext;
         delete head;
         head = new_head;
         list_length--;
@@ -72,8 +72,8 @@ public:
 
     void insert(T value, int index) {
         int counter = 0;
-        Node<T>* element = head;
-        Node<T>* new_element = new Node<T>(value);
+        Node* element = head;
+        Node* new_element = new Node(value);
         while (element != nullptr) {
             if (counter == index-1) {
                 new_element->pNext = element->pNext;
@@ -90,10 +90,10 @@ public:
 
     void removeAt(int index) {
         int counter = 0;
-        Node<T>* element = head;
+        Node* element = head;
         while (element != nullptr) {
             if (counter == index-1) {
-                Node<T>* del_element = element->pNext;
+                Node* del_element = element->pNext;
                 element->pNext = element->pNext->pNext;
                 delete del_element;
                 break;
@@ -114,7 +114,7 @@ public:
 
     T& operator[] (const int index) {
         int counter = 0;
-        Node<T>* element = head;
+        Node* element = head;
         while (element != nullptr) {
             if (counter == index) {
                 return element->data;
@@ -132,7 +132,7 @@ public:
     }
 
     void print_all() {
-        Node<T>* element = head;
+        Node* element = head;
         while (element != nullptr) {
             std::cout << element->data << "\n";
             element = element->pNext;
@@ -142,18 +142,19 @@ public:
 
 int main() {
     List<float> list = {1,2,3};
-    list.push_back(4);
-    list.push_front(0);
+    // list.push_back(4);
+    // list.push_front(0);
 
-    list.pop_back();
-    list.pop_front();
+    // list.pop_back();
+    // list.pop_front();
 
-    list.insert(2.5, 2);
+    // list.insert(2.5, 2);
     list.removeAt(2);
+    list.print_all();
 
-    for (int i = 0; i < list.length(); i++) {
-        std::cout << list[i] << "\n";
-    }
+    // for (int i = 0; i < list.length(); i++) {
+    //     std::cout << list[i] << "\n";
+    // }
 
    return 0; 
 }
