@@ -91,6 +91,7 @@ public:
         } else {
             element = head;
             counter = 0;
+            
             while (element != nullptr) {
                 if (counter == index-1) {
                     new_element->pNext = element->pNext;
@@ -171,7 +172,7 @@ public:
         return list_length;
     }
 
-    void print_all() {
+    void print() {
         Node* element = head;
         while (element != nullptr) {
             std::cout << element->data << "\n";
@@ -189,7 +190,7 @@ int main() {
     // list.pop_front();
 
     // list.insert(100, 5);
-    list.print_all();
+    list.print();
 
     // for (int i = 0; i < list.length(); i++) {
     //     std::cout << list[i] << "\n";

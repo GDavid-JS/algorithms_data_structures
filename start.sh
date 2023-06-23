@@ -1,3 +1,4 @@
 # https://habr.com/ru/companies/ruvds/articles/325522/
-g++ $1.cpp -o $1.out
-./$1.out
+if g++ $1.cpp -o ./dist/$1.out
+then ./dist/$1.out
+fi

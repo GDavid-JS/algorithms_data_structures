@@ -7,7 +7,6 @@ private:
     
     unsigned int list_length = 0;
     Node* head = nullptr;
-    Node* last = nullptr;
 
     class Node {
     public:
@@ -34,11 +33,15 @@ public:
 
         if (head == nullptr) {
             head = new Node(data);
-            last = head;
         } else {
-            Node *current = new Node(data);
-            last->pNext = current;
-            last = current;
+            // last->pNext = new Node(data);
+            // last = last->pNext;
+
+            Node* element = head;
+            while (element->pNext != nullptr) {
+                element = element->pNext;
+            }
+            element->pNext = new Node(data);
         }
     }
 
@@ -56,9 +59,9 @@ public:
             element = element->pNext;
         }
 
-        delete last;
-        last = element;
-        last->pNext = nullptr;
+        delete element->pNext;
+        element->pNext = nullptr;
+        
 
         list_length--;
     }
@@ -131,7 +134,7 @@ public:
         return list_length;
     }
 
-    void print_all() {
+    void print() {
         Node* element = head;
         while (element != nullptr) {
             std::cout << element->data << "\n";
@@ -142,15 +145,15 @@ public:
 
 int main() {
     List<float> list = {1,2,3};
-    // list.push_back(4);
-    // list.push_front(0);
+    list.push_back(4);
+    list.push_front(0);
 
-    // list.pop_back();
-    // list.pop_front();
+    list.pop_back();
+    list.pop_front();
 
-    // list.insert(2.5, 2);
+    list.insert(2.5, 2);
     list.removeAt(2);
-    list.print_all();
+    list.print();
 
     // for (int i = 0; i < list.length(); i++) {
     //     std::cout << list[i] << "\n";
