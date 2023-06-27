@@ -5,7 +5,7 @@ template <typename T> class DoublyList {
 private:
     class Node;
     
-    unsigned int list_length = 0;
+    unsigned int length = 0;
     Node* head = nullptr;
     Node* tail = nullptr;
 
@@ -32,7 +32,7 @@ public:
     // }
 
     void push_back(T data) {
-        list_length++;
+        length++;
 
         if (head == nullptr) {
             head = new Node(data);
@@ -48,7 +48,7 @@ public:
     void push_front(T data) {
         head = new Node(data, head);
 
-        list_length++;
+        length++;
     }
 
     void pop_back() {
@@ -58,14 +58,14 @@ public:
         tail->pNext = nullptr;
 
 
-        list_length--;
+        length--;
     }
 
     void pop_front() {
         Node *new_head = head->pNext;
         delete head;
         head = new_head;
-        list_length--;
+        length--;
     }
 
     void insert(T value, int index) {
@@ -73,9 +73,9 @@ public:
         Node* new_element = new Node(value);
         Node* element;
 
-        if (index > list_length/2) {
+        if (index > length/2) {
             element = tail;
-            counter = list_length;
+            counter = length;
 
             while (element != nullptr) {
                 if (counter == index) {
@@ -105,7 +105,7 @@ public:
             }
         }
         
-        list_length++;
+        length++;
     }
 
     void removeAt(int index) {
@@ -113,9 +113,9 @@ public:
         Node* element;
         index++;
 
-        if (index > list_length/2) {
+        if (index > length/2) {
             element = tail;
-            counter = list_length;
+            counter = length;
 
             while (element != nullptr) {
                 if (counter == index-1) {
@@ -144,11 +144,11 @@ public:
             }
         }
         
-        list_length--;
+        length--;
     }
 
     void clear() {
-        while (list_length) {
+        while (length) {
             pop_front();
         }
     }
@@ -168,8 +168,20 @@ public:
         throw std::out_of_range("Index out of range");
     }
 
-    int length() {
-        return list_length;
+    int get_length() {
+        return length;
+    }
+
+    void set_length(unsigned int new_length) {
+        for (unsigned int i = length; i < new_length; i++) {
+            // std::cout << i << "\n";
+            // T data;
+            // data.value = 10;
+            // data.key = "12";
+            // std::cout << data.key << "\n" << data.value << "\n";
+            push_back(T());
+        }
+        length = new_length;
     }
 
     void print() {
@@ -181,20 +193,20 @@ public:
     }
 };
 
-int main() {
-    DoublyList<float> list = {1,2,3,4,5};
-    // list.push_back(4);
-    // list.push_front(0);
+// int main() {
+//     DoublyList<float> list = {1,2,3};
+//     list.push_back(4);
+//     list.push_front(0);
 
-    // list.pop_back();
-    // list.pop_front();
+//     list.pop_back();
+//     list.pop_front();
 
-    // list.insert(100, 5);
-    list.print();
+//     list.insert(100, 2);
+//     list.print();
 
-    // for (int i = 0; i < list.length(); i++) {
-    //     std::cout << list[i] << "\n";
-    // }
+//     for (int i = 0; i < list.get_length(); i++) {
+//         std::cout << list[i] << "\n";
+//     }
 
-   return 0; 
-}
+//    return 0; 
+// }
