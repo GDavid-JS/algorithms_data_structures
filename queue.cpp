@@ -1,5 +1,3 @@
-#include <iostream>
-
 template <class T> class Queue {
 private:
     class Node;
@@ -22,8 +20,10 @@ private:
         }
     };
 public:
-    template <typename... Args> Queue(Args... args) {
-        (push(args), ...);
+    Queue(std::initializer_list<T> args) {
+        for (int arg : args) {
+            push(arg);
+        }
     }
 
     ~Queue() {

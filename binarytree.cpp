@@ -1,9 +1,4 @@
 //Бинарное дерево - каждая яцейка хранит данные, адрес элемента который меньше текущих данных и адрес элемента который больше текущих данных
-#include <iostream>
-#include <string>
-#include <vector>
-#include "queue.cpp"
-
 template <typename T> class Tree {
 private:
     class Node;
@@ -98,8 +93,10 @@ private:
     }
 
 public:
-    template <typename... Args> Tree(Args... args) {
-        (add(args, head), ...);
+    Tree(std::initializer_list<T> args) {
+        for (int arg : args) {
+            add(arg);
+        }
     }
 
     void add(T data) {

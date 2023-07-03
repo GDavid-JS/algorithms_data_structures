@@ -1,6 +1,4 @@
 //Односвязный список - массив в котором хранится текущее значение элемента массива и адрес следующего элемента
-#include <iostream>
-
 template <typename T> class DoublyList {
 private:
     class Node;
@@ -23,8 +21,10 @@ private:
     };
 public:
 
-    template <typename... Args> DoublyList(Args... args) {
-        (push_back(args), ...);
+    DoublyList(std::initializer_list<T> args) {
+        for (int arg : args) {
+            push_back(arg);
+        }
     }
 
     // ~DoublyList() {

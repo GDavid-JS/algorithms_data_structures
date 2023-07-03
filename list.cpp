@@ -1,6 +1,4 @@
 //Односвязный список - массив в котором хранится текущее значение элемента массива и адрес следующего элемента
-#include <iostream>
-
 template <typename T> class List {
 private:
     class Node;
@@ -20,8 +18,10 @@ private:
     };
 public:
 
-    template <typename... Args> List(Args... args) {
-        (push_back(args), ...);
+    List(std::initializer_list<T> args) {
+        for (int arg : args) {
+            push_back(arg);
+        }
     }
 
     ~List() {
@@ -143,21 +143,21 @@ public:
     }
 };
 
-int main() {
-    List<float> list = {1,2,3};
-    list.push_back(4);
-    list.push_front(0);
+// int main() {
+//     List<float> list = {1,2,3};
+    // list.push_back(4);
+    // list.push_front(0);
 
-    list.pop_back();
-    list.pop_front();
+//     list.pop_back();
+//     list.pop_front();
 
-    list.insert(2.5, 2);
-    list.removeAt(2);
-    list.print();
+//     list.insert(2.5, 2);
+//     list.removeAt(2);
+//     list.print();
 
-    // for (int i = 0; i < list.length(); i++) {
-    //     std::cout << list[i] << "\n";
-    // }
+//     // for (int i = 0; i < list.length(); i++) {
+//     //     std::cout << list[i] << "\n";
+//     // }
 
-   return 0; 
-}
+//    return 0; 
+// }

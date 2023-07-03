@@ -1,5 +1,3 @@
-#include <iostream>
-
 template <class T> class Stack {
 private:
     class Node;
@@ -17,8 +15,10 @@ private:
         }
     };
 public:
-    template <typename... Args> Stack(Args... args) {
-        (push(args), ...);
+    Stack(std::initializer_list<T> args) {
+        for (int arg : args) {
+            push(arg);
+        }
     }
 
     void push(T data) {
@@ -62,22 +62,22 @@ public:
     }
 };
 
-int main() {
-    Stack<float> stack = {1,2,3};
+// int main() {
+//     Stack<float> stack = {1,2,3};
 
-    stack.push(10);
-    stack.push(101);
+//     stack.push(10);
+//     stack.push(101);
 
-    stack.print();
-    std::cout << "\n";
+//     stack.print();
+//     std::cout << "\n";
 
-    float value = stack.pop();
-    std::cout << value << "\n\n";
+//     float value = stack.pop();
+//     std::cout << value << "\n\n";
 
-    stack.print();
+//     stack.print();
 
-    stack.clear();
-    stack.print();
+//     stack.clear();
+//     stack.print();
 
-    return 0;
-}
+//     return 0;
+// }

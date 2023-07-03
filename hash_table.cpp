@@ -1,6 +1,3 @@
-#include <iostream>
-#include "doubly_list.cpp"
-
 class Varchar {
 private:
     std::string value;
@@ -44,13 +41,13 @@ public:
 
 };
 
-int main() {
+// int main() {
     
-    HashTable<std::string, int> hashTable;
+//     HashTable<std::string, int> hashTable;
 
-    hashTable.insert("apple", 5);
-    hashTable.insert("appleqq", 10);
-    hashTable.print();
+//     hashTable.insert("apple", 5);
+//     hashTable.insert("appleqq", 10);
+//     hashTable.print();
     
-    return 0;
-}
+//     return 0;
+// }
