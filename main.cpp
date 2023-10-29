@@ -388,55 +388,55 @@ public:
         // return seconds;
     }
 
-    virtual void testStupid() {
+    void testStupid() {
         test([](Sort<double>& sort) {
             sort.stupid();
         });
     }
 
-    virtual void testBubble() {
+    void testBubble() {
         test([](Sort<double>& sort) {
             sort.bubble();
         });
     }
 
-    virtual void testShaker() {
+    void testShaker() {
         test([](Sort<double>& sort) {
             sort.shaker();
         });
     }
 
-    virtual void testEvenOdd() {
+    void testEvenOdd() {
         test([](Sort<double>& sort) {
             sort.evenOdd();
         });
     }
 
-    virtual void testComb() {
+    void testComb() {
         test([](Sort<double>& sort) {
             sort.comb();
         });
     }
 
-    virtual void testInsertion() {
+    void testInsertion() {
         test([](Sort<double>& sort) {
             sort.insertion();
         });
     }
 
-    virtual void testSelection() {
+    void testSelection() {
         test([](Sort<double>& sort) {
             sort.selection();
         });
     }
 
-    virtual void testMerge() {
+    void testMerge() {
         test([](Sort<double>& sort) {
             sort.merge();
         });
     }
 
-    virtual void testQuick() {
+    void testQuick() {
         test([](Sort<double>& sort) {
             sort.quick();
         });
@@ -546,55 +546,55 @@ public:
         Plt::addGraph();
     }
 
-    void testStupid() override {
+    void testStupid() {
         PltTest<T>::test([](Sort<T>& sort) {
             sort.stupid();
         });
     }
 
-    void testBubble () override {
+    void testBubble () {
         PltTest<T>::test([](Sort<T>& sort) {
             sort.bubble();
         });
     }
 
-    void testShaker () override {
+    void testShaker () {
         PltTest<T>::test([](Sort<T>& sort) {
             sort.shaker();
         });
     }
 
-    void testEvenOdd () override {
+    void testEvenOdd () {
         PltTest<T>::test([](Sort<T>& sort) {
             sort.evenOdd();
         });
     }
 
-    void testComb () override {
+    void testComb () {
         PltTest<T>::test([](Sort<T>& sort) {
             sort.comb();
         });
     }
 
-    void testInsertion () override {
+    void testInsertion () {
         PltTest<T>::test([](Sort<T>& sort) {
             sort.insertion();
         });
     }
 
-    void testSelection () override {
+    void testSelection () {
         PltTest<T>::test([](Sort<T>& sort) {
             sort.selection();
         });
     }
 
-    void testMerge () override {
+    void testMerge () {
         PltTest<T>::test([](Sort<T>& sort) {
             sort.merge();
         });
     }
 
-    void testQuick () override {
+    void testQuick () {
         PltTest<T>::test([](Sort<T>& sort) {
             sort.quick();
         });
